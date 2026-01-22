@@ -3,6 +3,6 @@ from building import *
 
 # Add source code
 src = Glob('*.c')
-group = DefineGroup('watchx', src, depend=[''])
+group = DefineGroup('watchx', src, depend=['PKG_USING_LITTLEVGL2RTT'])
 
 Return('group')
