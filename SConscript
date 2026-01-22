@@ -27,11 +27,13 @@ inc += [
     cwd,
     os.path.join(cwd, "include"),
     os.path.join(SRC_DIR, "apps", "common"),
+    os.path.join(SRC_DIR, "misc"),
 ]
 
 subdirs = (
     "apps",
     "init",
+    "misc",
 )
 for s in subdirs:
     src += glob_relpath("*.c", os.path.join(SRC_DIR, s), cwd)

@@ -9,6 +9,7 @@
 /* includes (project) --------------------------------------------------------*/
 #include <watchx.h>
 #include <watchx_page.h>
+#include <watchx_font.h>
 
 /* defines -------------------------------------------------------------------*/
 /* typedefs ------------------------------------------------------------------*/
@@ -33,6 +34,8 @@ int watchx_init(void)
 {
     watchx_theme_init();
 
+    watchx_font_init();
+
     lv_adv_page_manager_init();
 
     LV_ADV_PAGE_PUSH(home);
@@ -42,5 +45,7 @@ int watchx_init(void)
 
 int watchx_deinit(void)
 {
+    watchx_font_deinit();
+
     return 0;
 }

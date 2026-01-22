@@ -4,14 +4,13 @@
  */
 
 /* define to prevent recursive inclusion -------------------------------------*/
-#ifndef __WATCHX_PAGE_H__
-#define __WATCHX_PAGE_H__
+#ifndef __WATCHX_FONT_H__
+#define __WATCHX_FONT_H__
 
 /* includes (standard library, system) ---------------------------------------*/
 /* includes (other library) --------------------------------------------------*/
 /* includes (project) --------------------------------------------------------*/
 #include <watchx.h>
-#include <watchx_font.h>
 /* includes (local) ----------------------------------------------------------*/
 
 #ifdef __cplusplus
@@ -24,10 +23,14 @@ extern "C" {
 /* inlines -------------------------------------------------------------------*/
 /* externs -------------------------------------------------------------------*/
 
-LV_ADV_PAGE_DECLARE(home);
+void watchx_font_init(void);
+void watchx_font_deinit(void);
+
+lv_font_t *watchx_font_create(uint16_t font_size);
+void watchx_font_delete(const lv_font_t *font);
 
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
 
-#endif /* __WATCHX_PAGE_H__ */
+#endif /* __WATCHX_FONT_H__ */
