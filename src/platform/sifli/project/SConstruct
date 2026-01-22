@@ -2,11 +2,14 @@ from building import *
 import os
 import rtconfig
 
-# Check SDK
-SIFLI_SDK = os.getenv('SIFLI_SDK')
-if not SIFLI_SDK:
-    print("Please run set_env.bat in root folder of SIFLI SDK to set environment.")
+# Check PONY
+PONY_DIR = os.getenv('PONY_DIR')
+if not PONY_DIR:
+    print("Please run export.ps1 in pony_sf dir to set environment.")
     exit()
+Export('PONY_DIR')
+
+SIFLI_SDK = os.getenv('SIFLI_SDK')
 
 # Prepare environment.
 PrepareEnv()

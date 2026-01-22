@@ -8,6 +8,7 @@
 #include <rtdevice.h>
 /* includes (other library) --------------------------------------------------*/
 #include "littlevgl2rtt.h"
+#include <lv_adv.h>
 /* includes (project) --------------------------------------------------------*/
 
 /* defines -------------------------------------------------------------------*/
@@ -45,9 +46,9 @@ void app_watch_entry(void *parameter)
         return;
     }
 
-    lv_obj_t *label = lv_label_create(lv_screen_active());
-    lv_label_set_text(label, "hello watchx on lvgl v9");
-    lv_obj_center(label);
+    lv_obj_t *btn = lv_adv_button_create(lv_screen_active(), "hello watchx on lvgl v9");
+    lv_obj_set_size(btn, lv_pct(80), lv_pct(30));
+    lv_obj_center(btn);
 
     while (1) {
         ms = lv_task_handler();
