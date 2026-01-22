@@ -19,6 +19,9 @@
 /* macro ---------------------------------------------------------------------*/
 /* functions (prototype/declaration) -----------------------------------------*/
 /* variables (extern) --------------------------------------------------------*/
+
+LV_IMAGE_DECLARE(img_logo);
+
 /* variables (local) ---------------------------------------------------------*/
 static struct rt_thread watch_thread;
 
@@ -46,9 +49,11 @@ void app_watch_entry(void *parameter)
         return;
     }
 
-    lv_obj_t *btn = lv_adv_button_create(lv_screen_active(), "hello watchx on lvgl v9");
-    lv_obj_set_size(btn, lv_pct(80), lv_pct(30));
-    lv_obj_center(btn);
+    lv_obj_t *img = lv_image_create(lv_screen_active());
+    lv_image_set_src(img, &img_logo);
+    // lv_obj_set_size(img, 100, 100);
+    lv_adv_image_set_size(img, 200, 200);
+    lv_obj_center(img);
 
     while (1) {
         ms = lv_task_handler();
