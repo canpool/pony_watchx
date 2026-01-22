@@ -12,6 +12,7 @@
 
 #include <lv_tiny_ttf.h>
 /* includes (project) --------------------------------------------------------*/
+#include <watchx.h>
 
 /* defines -------------------------------------------------------------------*/
 #define APP_WATCH_GUI_TASK_STACK_SIZE (16 << 10)
@@ -54,6 +55,10 @@ void app_watch_entry(void *parameter)
         return;
     }
 
+    if (watchx_init() != 0) {
+        return;
+    }
+
     lv_obj_t *img = lv_image_create(lv_screen_active());
     lv_image_set_src(img, &img_logo);
     // lv_obj_set_size(img, 100, 100);
@@ -71,6 +76,8 @@ void app_watch_entry(void *parameter)
         ms = lv_task_handler();
         rt_thread_mdelay(ms);
     }
+
+    watchx_deinit();
 }
 
 int app_watch_init(void)

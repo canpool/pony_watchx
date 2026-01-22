@@ -23,8 +23,17 @@ def glob_relpath(pattern, root='.', relative_to='.'):
     return result
 
 
-inc += [cwd]
-src += glob_relpath("*.c", os.path.join(SRC_DIR, "apps"), cwd)
+inc += [
+    cwd,
+    os.path.join(cwd, "include"),
+]
+
+subdirs = (
+    "apps",
+    "init",
+)
+for s in subdirs:
+    src += glob_relpath("*.c", os.path.join(SRC_DIR, s), cwd)
 
 group = DefineGroup('watchx', src, depend=[''], CPPPATH=inc)
 
