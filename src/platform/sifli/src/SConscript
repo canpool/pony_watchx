@@ -1,8 +1,17 @@
 import os
 from building import *
 
+cwd = GetCurrentDir()
+ROOT_DIR = os.path.join(cwd, "..", "..", "..", "..")
+
 # Add source code
 src = Glob('*.c')
 group = DefineGroup('watchx', src, depend=['PKG_USING_LITTLEVGL2RTT'])
 
-Return('group')
+# objs
+objs = [group]
+
+if GetDepend('PKG_USING_LITTLEVGL2RTT'):
+    objs.extend(SConscript(os.path.join(ROOT_DIR, 'SConscript'), variant_dir="watchx", duplicate=0))
+
+Return('objs')
