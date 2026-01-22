@@ -9,8 +9,6 @@
 /* includes (other library) --------------------------------------------------*/
 #include "littlevgl2rtt.h"
 #include <lv_adv.h>
-
-#include <lv_tiny_ttf.h>
 /* includes (project) --------------------------------------------------------*/
 #include <watchx.h>
 
@@ -22,12 +20,6 @@
 /* macro ---------------------------------------------------------------------*/
 /* functions (prototype/declaration) -----------------------------------------*/
 /* variables (extern) --------------------------------------------------------*/
-
-LV_IMAGE_DECLARE(img_logo);
-
-extern const unsigned char DroidSansFallback[];
-extern const int DroidSansFallback_size;
-
 /* variables (local) ---------------------------------------------------------*/
 static struct rt_thread watch_thread;
 
@@ -58,19 +50,6 @@ void app_watch_entry(void *parameter)
     if (watchx_init() != 0) {
         return;
     }
-
-    lv_obj_t *img = lv_image_create(lv_screen_active());
-    lv_image_set_src(img, &img_logo);
-    // lv_obj_set_size(img, 100, 100);
-    lv_adv_image_set_size(img, 200, 200);
-    lv_obj_center(img);
-
-    lv_font_t *font = lv_tiny_ttf_create_data(DroidSansFallback, DroidSansFallback_size, 24);
-
-    lv_obj_t *title = lv_label_create(lv_screen_active());
-    lv_label_set_text(title, "Watchx");
-    lv_obj_set_style_text_font(title, font, LV_PART_MAIN);
-    lv_obj_align_to(title, img, LV_ALIGN_BOTTOM_MID, 0, 30);
 
     while (1) {
         ms = lv_task_handler();

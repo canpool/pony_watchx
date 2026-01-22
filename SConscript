@@ -26,6 +26,7 @@ def glob_relpath(pattern, root='.', relative_to='.'):
 inc += [
     cwd,
     os.path.join(cwd, "include"),
+    os.path.join(SRC_DIR, "apps", "common"),
 ]
 
 subdirs = (

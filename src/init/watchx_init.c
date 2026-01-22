@@ -8,6 +8,7 @@
 /* includes (other library) --------------------------------------------------*/
 /* includes (project) --------------------------------------------------------*/
 #include <watchx.h>
+#include <watchx_page.h>
 
 /* defines -------------------------------------------------------------------*/
 /* typedefs ------------------------------------------------------------------*/
@@ -31,6 +32,10 @@ static void watchx_theme_init(void)
 int watchx_init(void)
 {
     watchx_theme_init();
+
+    lv_adv_page_manager_init();
+
+    LV_ADV_PAGE_PUSH(home);
 
     return 0;
 }
