@@ -45,7 +45,7 @@ static int32_t default_keypad_handler(lv_key_t key, lv_indev_state_t event)
 
         if ((LV_INDEV_STATE_PR == event) && (LV_KEY_HOME == key)) {
             if (lv_adv_page_is_current(LV_ADV_PAGE(home))) {
-                LV_ADV_PAGE_PUSH_ANIM(dummy, LV_SCR_LOAD_ANIM_OUT_LEFT);
+                LV_ADV_PAGE_PUSH_ANIM(menu, LV_SCR_LOAD_ANIM_OUT_LEFT);
             } else {
                 LV_ADV_PAGE_BACK_TO_ANIM(home, LV_SCR_LOAD_ANIM_OUT_RIGHT);
             }
