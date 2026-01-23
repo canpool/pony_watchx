@@ -31,7 +31,7 @@ lv_font_t *watchx_font_create(uint16_t font_size)
 
 void watchx_font_delete(const lv_font_t *font)
 {
-    lv_tiny_ttf_destroy(font);
+    lv_tiny_ttf_destroy((lv_font_t *)font);
 }
 
 #if LV_ADV_FONT_CUSTOM
