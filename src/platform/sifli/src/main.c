@@ -7,9 +7,5 @@
 int main(void)
 {
     rt_kprintf("Hello watchx!\n");
-
-    while (1) {
-        rt_thread_mdelay(1000);
-    }
     return 0;
 }

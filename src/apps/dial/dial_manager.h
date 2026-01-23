@@ -4,8 +4,8 @@
  */
 
 /* define to prevent recursive inclusion -------------------------------------*/
-#ifndef __WATCHX_FONT_H__
-#define __WATCHX_FONT_H__
+#ifndef __DIAL_MANAGER_H__
+#define __DIAL_MANAGER_H__
 
 /* includes (standard library, system) ---------------------------------------*/
 /* includes (other library) --------------------------------------------------*/
@@ -18,22 +18,20 @@ extern "C" {
 #endif /* __cplusplus */
 
 /* defines -------------------------------------------------------------------*/
+
+#define DIAL_BUILTIN_NUM  2
+#define DIAL_DOWNLOAD_NUM 1
+#define DIAL_TOTAL_NUM    (DIAL_BUILTIN_NUM + DIAL_DOWNLOAD_NUM)
+
 /* typedefs ------------------------------------------------------------------*/
 /* macro ---------------------------------------------------------------------*/
-
-#define WX_FONT(font_size) watchx_font_create(font_size)
-
 /* inlines -------------------------------------------------------------------*/
 /* externs -------------------------------------------------------------------*/
 
-void watchx_font_init(void);
-void watchx_font_deinit(void);
-
-lv_font_t *watchx_font_create(uint16_t font_size);
-void watchx_font_delete(const lv_font_t *font);
+lv_adv_app_t *dial_create_app(lv_obj_t *parent, int32_t dial_id, void *user_data);
 
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
 
-#endif /* __WATCHX_FONT_H__ */
+#endif /* __DIAL_MANAGER_H__ */

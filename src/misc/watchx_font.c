@@ -10,6 +10,11 @@
 /* includes (project) --------------------------------------------------------*/
 
 /* defines -------------------------------------------------------------------*/
+
+#define WX_FONT_MIN_SIZE  8
+#define WX_FONT_MAX_SIZE  48
+#define WX_FONT_CACHE_NUM (((WX_FONT_MAX_SIZE - WX_FONT_MIN_SIZE) / 2) + 1)
+
 /* typedefs ------------------------------------------------------------------*/
 /* macro ---------------------------------------------------------------------*/
 /* functions (prototype/declaration) -----------------------------------------*/
@@ -19,14 +24,28 @@ extern const unsigned char DroidSansFallback[];
 extern const int DroidSansFallback_size;
 
 /* variables (local) ---------------------------------------------------------*/
+
+static lv_font_t *font_cache[WX_FONT_CACHE_NUM];
+
 /* variables (global) --------------------------------------------------------*/
 /* functions (inline) --------------------------------------------------------*/
 /* functions (implementation) ------------------------------------------------*/
 
 lv_font_t *watchx_font_create(uint16_t font_size)
 {
-    lv_font_t *font = lv_tiny_ttf_create_data(DroidSansFallback, DroidSansFallback_size, font_size);
-    return font;
+    font_size = (font_size + 1) & ~1;
+    if (font_size < WX_FONT_MIN_SIZE) {
+        font_size = WX_FONT_MIN_SIZE;
+    }
+    if (font_size > WX_FONT_MAX_SIZE) {
+        font_size = WX_FONT_MAX_SIZE;
+    }
+    uint16_t idx = (font_size - WX_FONT_MIN_SIZE) >> 1;
+    if (font_cache[idx] == NULL) {
+        font_cache[idx] =
+            lv_tiny_ttf_create_data(DroidSansFallback, DroidSansFallback_size, font_size);
+    }
+    return font_cache[idx];
 }
 
 void watchx_font_delete(const lv_font_t *font)

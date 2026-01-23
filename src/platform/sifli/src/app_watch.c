@@ -62,6 +62,9 @@ void app_watch_entry(void *parameter)
     rt_err_t ret = RT_EOK;
     rt_uint32_t ms;
 
+    set_date(2026, 1, 23);
+    set_time(13, 14, 0);
+
     lcd_device = rt_device_find(LCD_DEVICE_NAME);
     if (lcd_device == NULL) {
         return;

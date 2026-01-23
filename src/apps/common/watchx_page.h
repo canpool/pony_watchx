@@ -28,6 +28,7 @@ extern "C" {
 LV_ADV_PAGE_DECLARE(dummy);
 
 LV_ADV_PAGE_DECLARE(home);
+LV_ADV_SUBPAGE_DECLARE(dial);
 
 LV_ADV_PAGE_DECLARE(menu);
 

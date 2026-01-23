@@ -8,6 +8,7 @@ objs_ezip = []
 
 if GetDepend('LV_USE_EZIP'):
     objs_ezip += Glob('common/zip/*.png')
+    objs_ezip += Glob('dial/dial1/390x450/zip/*.png')
 
 # color_fmt, file_fmt, section_name
 if 16 == GetConfigValue('LV_COLOR_DEPTH'):
