@@ -4,14 +4,12 @@
  */
 
 /* define to prevent recursive inclusion -------------------------------------*/
-#ifndef __WATCHX_PAGE_H__
-#define __WATCHX_PAGE_H__
+#ifndef __WATCHX_INPUT_H__
+#define __WATCHX_INPUT_H__
 
 /* includes (standard library, system) ---------------------------------------*/
 /* includes (other library) --------------------------------------------------*/
 /* includes (project) --------------------------------------------------------*/
-#include <watchx.h>
-#include <watchx_font.h>
 /* includes (local) ----------------------------------------------------------*/
 
 #ifdef __cplusplus
@@ -24,12 +22,10 @@ extern "C" {
 /* inlines -------------------------------------------------------------------*/
 /* externs -------------------------------------------------------------------*/
 
-LV_ADV_PAGE_DECLARE(dummy);
-
-LV_ADV_PAGE_DECLARE(home);
+void watchx_input_keypad_init(void);
 
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
 
-#endif /* __WATCHX_PAGE_H__ */
+#endif /* __WATCHX_INPUT_H__ */

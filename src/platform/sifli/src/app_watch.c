@@ -8,9 +8,12 @@
 #include <rtdevice.h>
 /* includes (other library) --------------------------------------------------*/
 #include "littlevgl2rtt.h"
+#include <lvsf.h>
 #include <lv_adv.h>
 /* includes (project) --------------------------------------------------------*/
 #include <watchx.h>
+#include <watchx_input.h>
+#include <watchx_page.h>
 
 /* defines -------------------------------------------------------------------*/
 #define APP_WATCH_GUI_TASK_STACK_SIZE (16 << 10)
@@ -32,6 +35,28 @@ static rt_device_t lcd_device;
 /* functions (inline) --------------------------------------------------------*/
 /* functions (implementation) ------------------------------------------------*/
 
+static int32_t default_keypad_handler(lv_key_t key, lv_indev_state_t event)
+{
+    // LV_INDEV_STATE_REL == 0，LV_INDEV_STATE_PRESSED == 1
+    static lv_indev_state_t last_event = LV_INDEV_STATE_REL;
+
+    if (last_event != event) {   // Not execute repeatly.
+        last_event = event;
+
+        if ((LV_INDEV_STATE_PR == event) && (LV_KEY_HOME == key)) {
+            if (lv_adv_page_is_current(LV_ADV_PAGE(home))) {
+                LV_ADV_PAGE_PUSH_ANIM(dummy, LV_SCR_LOAD_ANIM_OUT_LEFT);
+            } else {
+                LV_ADV_PAGE_BACK_TO_ANIM(home, LV_SCR_LOAD_ANIM_OUT_RIGHT);
+            }
+        } else if ((LV_INDEV_STATE_PR == event) && (LV_KEY_ESC == key)) {
+            LV_ADV_PAGE_BACK_ANIM(LV_SCR_LOAD_ANIM_OUT_RIGHT);
+        }
+    }
+
+    return LV_BLOCK_EVENT;
+}
+
 void app_watch_entry(void *parameter)
 {
     rt_err_t ret = RT_EOK;
@@ -50,6 +75,9 @@ void app_watch_entry(void *parameter)
     if (watchx_init() != 0) {
         return;
     }
+
+    watchx_input_keypad_init();
+    keypad_default_handler_register(default_keypad_handler);
 
     while (1) {
         ms = lv_task_handler();

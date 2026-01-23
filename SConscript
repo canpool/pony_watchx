@@ -28,6 +28,7 @@ inc += [
     os.path.join(cwd, "include"),
     os.path.join(SRC_DIR, "apps", "common"),
     os.path.join(SRC_DIR, "misc"),
+    os.path.join(SRC_DIR, "platform", "common"),
 ]
 
 subdirs = (
