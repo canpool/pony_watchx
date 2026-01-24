@@ -30,7 +30,7 @@ void watchx_font_init(void);
 void watchx_font_deinit(void);
 
 lv_font_t *watchx_font_create(uint16_t font_size);
-void watchx_font_delete(const lv_font_t *font);
+void watchx_font_delete(lv_font_t *font);
 
 #ifdef __cplusplus
 }

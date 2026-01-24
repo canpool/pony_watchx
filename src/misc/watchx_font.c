@@ -20,8 +20,12 @@
 /* functions (prototype/declaration) -----------------------------------------*/
 /* variables (extern) --------------------------------------------------------*/
 
+#ifdef WX_USE_FILE_RESOURCE
+#define TTF_PATH LV_ADV_FONT_RES("/DroidSansFallback")
+#else
 extern const unsigned char DroidSansFallback[];
 extern const int DroidSansFallback_size;
+#endif
 
 /* variables (local) ---------------------------------------------------------*/
 
@@ -42,15 +46,24 @@ lv_font_t *watchx_font_create(uint16_t font_size)
     }
     uint16_t idx = (font_size - WX_FONT_MIN_SIZE) >> 1;
     if (font_cache[idx] == NULL) {
+#ifdef WX_USE_FILE_RESOURCE
+        font_cache[idx] = lv_freetype_font_create(TTF_PATH, LV_FREETYPE_FONT_RENDER_MODE_BITMAP,
+                                                  font_size, LV_FREETYPE_FONT_STYLE_NORMAL);
+#else
         font_cache[idx] =
             lv_tiny_ttf_create_data(DroidSansFallback, DroidSansFallback_size, font_size);
+#endif
     }
     return font_cache[idx];
 }
 
-void watchx_font_delete(const lv_font_t *font)
+void watchx_font_delete(lv_font_t *font)
 {
-    lv_tiny_ttf_destroy((lv_font_t *)font);
+#ifdef WX_USE_FILE_RESOURCE
+    lv_freetype_font_delete(font);
+#else
+    lv_tiny_ttf_destroy(font);
+#endif
 }
 
 #if LV_ADV_FONT_CUSTOM

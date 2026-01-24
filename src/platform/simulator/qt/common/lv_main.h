@@ -1,16 +1,16 @@
 /**
- * Copyright (C) 2026 maminjie <canpool@163.com>
+ * Copyright (C) 2025 maminjie <canpool@163.com>
  * SPDX-License-Identifier: MulanPSL-2.0
  */
 
 /* define to prevent recursive inclusion -------------------------------------*/
-#ifndef __WATCHX_IMAGE_H__
-#define __WATCHX_IMAGE_H__
+#ifndef __LV_MAIN_H__
+#define __LV_MAIN_H__
 
 /* includes (standard library, system) ---------------------------------------*/
 /* includes (other library) --------------------------------------------------*/
+#include <lv_adv.h>
 /* includes (project) --------------------------------------------------------*/
-#include <watchx.h>
 /* includes (local) ----------------------------------------------------------*/
 
 #ifdef __cplusplus
@@ -20,22 +20,13 @@ extern "C" {
 /* defines -------------------------------------------------------------------*/
 /* typedefs ------------------------------------------------------------------*/
 /* macro ---------------------------------------------------------------------*/
-
-#ifdef WX_USE_FILE_RESOURCE
-#define WX_IMG_DECLARE(name)
-#define WX_IMG_GET(name) LV_ADV_IMG_RES("/" #name)
-#else
-#define WX_IMG_DECLARE(name) LV_IMAGE_DECLARE(name)
-#define WX_IMG_GET(name)     (const void *)&name
-#endif
-
 /* inlines -------------------------------------------------------------------*/
 /* externs -------------------------------------------------------------------*/
 
-WX_IMG_DECLARE(img_logo);
+void lv_adv_setup(void);
 
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
 
-#endif /* __WATCHX_IMAGE_H__ */
+#endif /* __LV_MAIN_H__ */
