@@ -23,16 +23,16 @@ typedef struct {
 /* variables (local) ---------------------------------------------------------*/
 static const menu_item_t menu_items[] = {
     // clang-format off
-    {"dumy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
-    {"dumy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
-    {"dumy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
-    {"dumy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
-    {"dumy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
-    {"dumy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
-    {"dumy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
-    {"dumy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
-    {"dumy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
-    {"dumy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
+    {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
+    {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
+    {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
+    {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
+    {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
+    {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
+    {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
+    {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
+    {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
+    {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
     // clang-format on
 };
 

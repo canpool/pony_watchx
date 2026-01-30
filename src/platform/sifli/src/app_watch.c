@@ -74,6 +74,7 @@ void app_watch_entry(void *parameter)
     if (ret != RT_EOK) {
         return;
     }
+    lv_adv_screen_set_shape(LV_ADV_SCREEN_SHAPE_ROUND);
 
     if (watchx_init() != 0) {
         return;
