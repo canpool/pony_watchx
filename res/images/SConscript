@@ -26,12 +26,14 @@ for root, dirs, files in os.walk(cwd):
         if not contains_target_dir:
             continue
 
-        if 'zip' in file_path:
+        if 'no_zip' in file_path:
+            objs_no_ezip.append(file_path)
+        elif 'zip' in file_path:
             if GetDepend('LV_USE_EZIP'):
                 objs_ezip.append(file_path)
             else:
                 objs_no_ezip.append(file_path)
-        elif 'no_zip' in file_path:
+        else:
             objs_no_ezip.append(file_path)
 
 # color_fmt, file_fmt, section_name

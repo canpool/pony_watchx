@@ -7,7 +7,8 @@ inc = []
 cwd = GetCurrentDir()  # get current dir path
 
 SRC_DIR = os.path.join(cwd, "src")
-RES_DIR = os.path.join(cwd, "resources")
+RES_DIR = os.path.join(cwd, "res")
+PLATFORM_DIR = os.path.join(cwd, "platform")
 
 
 def glob_relpath(pattern, root='.', relative_to='.'):
@@ -28,16 +29,10 @@ inc += [
     os.path.join(cwd, "include"),
     os.path.join(SRC_DIR, "apps", "common"),
     os.path.join(SRC_DIR, "misc"),
-    os.path.join(SRC_DIR, "platform", "common"),
+    os.path.join(PLATFORM_DIR, "common"),
 ]
 
-subdirs = (
-    "apps",
-    "init",
-    "misc",
-)
-for s in subdirs:
-    src += glob_relpath("*.c", os.path.join(SRC_DIR, s), cwd)
+src += glob_relpath("*.c", SRC_DIR, cwd)
 
 group = DefineGroup('watchx', src, depend=[''], CPPPATH=inc)
 

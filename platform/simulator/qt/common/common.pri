@@ -1,4 +1,4 @@
-TOP_DIR = $$PWD/../../../../..
+TOP_DIR = $$PWD/../../../..
 
 LV_ADV_DIR = $$TOP_DIR/3rdparty/lv_advanced
 3RDPARTY_DIR = $$LV_ADV_DIR/3rdparty

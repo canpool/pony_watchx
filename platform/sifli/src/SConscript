@@ -2,7 +2,7 @@ import os
 from building import *
 
 cwd = GetCurrentDir()
-ROOT_DIR = os.path.join(cwd, "..", "..", "..", "..")
+ROOT_DIR = os.path.join(cwd, "..", "..", "..")
 
 # Add source code
 src = Glob('*.c')
