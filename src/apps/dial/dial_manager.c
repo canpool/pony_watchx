@@ -15,6 +15,7 @@
 /* functions (prototype/declaration) -----------------------------------------*/
 
 LV_ADV_APP_DECLARE(dial_1);
+LV_ADV_APP_DECLARE(dial_2);
 
 /* variables (extern) --------------------------------------------------------*/
 /* variables (local) ---------------------------------------------------------*/
@@ -26,6 +27,14 @@ static lv_adv_dial_t dial_items[DIAL_TOTAL_NUM] = {
         NULL,
         LV_ADV_DIAL_RESOURCE_BUILTIN,
         LV_ADV_DIAL_POWER_GRADE_2,
+        false,
+    },
+    {
+        "Analog Normal",
+        LV_ADV_APP(dial_2),
+        NULL,
+        LV_ADV_DIAL_RESOURCE_BUILTIN,
+        LV_ADV_DIAL_POWER_GRADE_1,
         false,
     },
 };
