@@ -6,7 +6,7 @@ TEMPLATE = app
 DESTDIR = ../bin
 
 HEADERS += \
-    $$files($$PWD/*.h, true)
+    $$PWD/lv_conf.h
 
 SOURCES += \
     $$PWD/main.cpp
