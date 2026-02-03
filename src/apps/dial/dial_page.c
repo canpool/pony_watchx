@@ -28,7 +28,7 @@ typedef struct {
 
 static void event_handler(lv_event_t *e)
 {
-    LV_ADV_PAGE_PUSH(dial_gallery);
+    LV_ADV_PAGE_PUSH_ANIM(dial_gallery, LV_SCR_LOAD_ANIM_FADE_IN);
 }
 
 static lv_obj_t *subpage_on_create(lv_adv_subpage_t *self)

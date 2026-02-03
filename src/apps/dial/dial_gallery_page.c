@@ -66,7 +66,7 @@ static void preview_event_handler(lv_event_t *e)
     lv_obj_t *obj = lv_event_get_current_target(e);
     int32_t index = lv_obj_get_index(obj);
     lv_adv_kv_set_int(WX_KEY_DIAL, index);
-    LV_ADV_PAGE_BACK();
+    LV_ADV_PAGE_BACK_ANIM(LV_SCR_LOAD_ANIM_FADE_OUT);
 }
 
 static lv_obj_t *page_on_create(lv_adv_page_t *self)
