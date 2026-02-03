@@ -22,12 +22,12 @@ extern "C" {
 /* macro ---------------------------------------------------------------------*/
 
 #ifdef WX_USE_FILE_RESOURCE
-#define WX_IMG_DECLARE(name)
 #define WX_IMG_GET(name) LV_ADV_IMG_RES("/" #name)
 #else
-#define WX_IMG_DECLARE(name) LV_IMAGE_DECLARE(name)
 #define WX_IMG_GET(name)     (const void *)&name
 #endif
+
+#define WX_IMG_DECLARE(name) LV_IMAGE_DECLARE(name)
 
 /* inlines -------------------------------------------------------------------*/
 /* externs -------------------------------------------------------------------*/
