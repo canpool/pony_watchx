@@ -4,13 +4,12 @@
  */
 
 /* define to prevent recursive inclusion -------------------------------------*/
-#ifndef __DIAL_MANAGER_H__
-#define __DIAL_MANAGER_H__
+#ifndef __WATCHX_SETTINGS_H__
+#define __WATCHX_SETTINGS_H__
 
 /* includes (standard library, system) ---------------------------------------*/
 /* includes (other library) --------------------------------------------------*/
 /* includes (project) --------------------------------------------------------*/
-#include <watchx.h>
 /* includes (local) ----------------------------------------------------------*/
 
 #ifdef __cplusplus
@@ -19,21 +18,15 @@ extern "C" {
 
 /* defines -------------------------------------------------------------------*/
 
-#define DIAL_BUILTIN_NUM  2
-#define DIAL_DOWNLOAD_NUM 1
-#define DIAL_TOTAL_NUM    (DIAL_BUILTIN_NUM + DIAL_DOWNLOAD_NUM)
+#define WX_KEY_DIAL "ui.dial"
 
 /* typedefs ------------------------------------------------------------------*/
 /* macro ---------------------------------------------------------------------*/
 /* inlines -------------------------------------------------------------------*/
 /* externs -------------------------------------------------------------------*/
 
-lv_adv_app_t *dial_create_app(lv_obj_t *parent, int32_t dial_id, void *user_data);
-lv_adv_dial_t *dial_get_item(int32_t dial_id);
-const void *dial_get_power_grade_src(lv_adv_dial_power_grade_t grade);
-
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
 
-#endif /* __DIAL_MANAGER_H__ */
+#endif /* __WATCHX_SETTINGS_H__ */

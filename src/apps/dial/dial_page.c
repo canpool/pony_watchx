@@ -26,14 +26,21 @@ typedef struct {
 /* functions (inline) --------------------------------------------------------*/
 /* functions (implementation) ------------------------------------------------*/
 
+static void event_handler(lv_event_t *e)
+{
+    LV_ADV_PAGE_PUSH(dial_gallery);
+}
+
 static lv_obj_t *subpage_on_create(lv_adv_subpage_t *self)
 {
     subpage_ctx_t *ctx = (subpage_ctx_t *)self;
     lv_obj_t *root = lv_adv_create_container(self->parent);
+    lv_obj_add_event_cb(root, event_handler, LV_EVENT_LONG_PRESSED, ctx);
 
     lv_adv_app_manager_init(&ctx->am);
 
     ctx->dial_id = 0;
+    lv_adv_kv_get_int(WX_KEY_DIAL, &ctx->dial_id);
     lv_adv_app_t *app = dial_create_app(root, ctx->dial_id, NULL);
     lv_adv_app_manager_load(&ctx->am, app);
 
@@ -44,7 +51,7 @@ static void subpage_on_show(lv_adv_subpage_t *self)
 {
     subpage_ctx_t *ctx = (subpage_ctx_t *)self;
     int32_t dial_id = ctx->dial_id;
-    // TODO: get real dial id
+    lv_adv_kv_get_int(WX_KEY_DIAL, &dial_id);
     if (dial_id != ctx->dial_id) {
         ctx->dial_id = dial_id;
         lv_adv_app_t *app = dial_create_app(self->cont, dial_id, NULL);

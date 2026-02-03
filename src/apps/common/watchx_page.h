@@ -13,6 +13,7 @@
 #include <watchx.h>
 #include <watchx_font.h>
 #include <watchx_image.h>
+#include <watchx_settings.h>
 /* includes (local) ----------------------------------------------------------*/
 
 #ifdef __cplusplus
@@ -29,6 +30,8 @@ LV_ADV_PAGE_DECLARE(dummy);
 
 LV_ADV_PAGE_DECLARE(home);
 LV_ADV_SUBPAGE_DECLARE(dial);
+
+LV_ADV_PAGE_DECLARE(dial_gallery);
 
 LV_ADV_PAGE_DECLARE(menu);
 
