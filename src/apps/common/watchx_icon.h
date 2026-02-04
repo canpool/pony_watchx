@@ -4,18 +4,13 @@
  */
 
 /* define to prevent recursive inclusion -------------------------------------*/
-#ifndef __WATCHX_PAGE_H__
-#define __WATCHX_PAGE_H__
+#ifndef __WATCHX_ICON_H__
+#define __WATCHX_ICON_H__
 
 /* includes (standard library, system) ---------------------------------------*/
 /* includes (other library) --------------------------------------------------*/
 /* includes (project) --------------------------------------------------------*/
-#include <watchx.h>
-#include <watchx_font.h>
-#include <watchx_image.h>
-#include <watchx_icon.h>
-#include <watchx_text.h>
-#include <watchx_settings.h>
+#include "watchx_image.h"
 /* includes (local) ----------------------------------------------------------*/
 
 #ifdef __cplusplus
@@ -23,25 +18,22 @@ extern "C" {
 #endif /* __cplusplus */
 
 /* defines -------------------------------------------------------------------*/
+
+#define ICON_ARROW_RIGHT     WX_IMG_GET(img_arrow_right)
+#define ICON_RADIO_UNCHECKED WX_IMG_GET(img_radio_unchecked)
+#define ICON_RADIO_CHECKED   WX_IMG_GET(img_radio_checked)
+
 /* typedefs ------------------------------------------------------------------*/
 /* macro ---------------------------------------------------------------------*/
 /* inlines -------------------------------------------------------------------*/
 /* externs -------------------------------------------------------------------*/
 
-LV_ADV_PAGE_DECLARE(dummy);
-
-LV_ADV_PAGE_DECLARE(home);
-LV_ADV_SUBPAGE_DECLARE(dial);
-
-LV_ADV_PAGE_DECLARE(dial_gallery);
-
-LV_ADV_PAGE_DECLARE(menu);
-
-LV_ADV_PAGE_DECLARE(setting);
-LV_ADV_PAGE_DECLARE(setting_desktop);
+WX_IMG_DECLARE(img_arrow_right);
+WX_IMG_DECLARE(img_radio_unchecked);
+WX_IMG_DECLARE(img_radio_checked);
 
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
 
-#endif /* __WATCHX_PAGE_H__ */
+#endif /* __WATCHX_ICON_H__ */
