@@ -21,22 +21,18 @@
 
 lv_obj_t *menu_cellular_create(lv_obj_t *parent, const menu_item_t *items, uint16_t item_cnt)
 {
-    lv_obj_t *menu = lv_adv_menu_cellular_create(parent);
-    lv_adv_menu_cellular_set_type(menu, LV_ADV_MENU_CELLULAR_SCALE);
+    lv_obj_t *menu = lv_adv_menu_cell_create(parent);
 
     for (size_t i = 0; i < item_cnt; i++) {
         const menu_item_t *item = items + i;
-        lv_obj_t *btn = lv_adv_toolbutton_create(menu, item->icon, "");
-        lv_adv_toolbutton_set_style(btn, LV_ADV_TOOLBUTTON_ICON_ONLY);
-        lv_obj_set_style_radius(btn, LV_RADIUS_CIRCLE, 0);
-        lv_obj_set_style_bg_color(btn, lv_color_hex(0x272727), 0);
-        lv_obj_t *title = lv_adv_button_get_label(btn);
-        lv_label_set_text(title, item->title);
+        lv_obj_t *img = lv_image_create(menu);
+        lv_image_set_src(img, item->icon);
         if (item->page != NULL) {
-            lv_obj_add_event_cb(btn, menu_item_event_handler, LV_EVENT_SHORT_CLICKED, (void *)item->page);
+            lv_obj_add_event_cb(img, menu_item_event_handler, LV_EVENT_SHORT_CLICKED,
+                                (void *)item->page);
         }
     }
-    lv_adv_menu_cellular_update_layout(menu);
+    lv_adv_menu_cell_update_layout(menu);
 
     return menu;
 }
