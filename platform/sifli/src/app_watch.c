@@ -14,6 +14,7 @@
 #include <watchx.h>
 #include <watchx_input.h>
 #include <watchx_page.h>
+#include <watchx_kvdb.h>
 
 /* defines -------------------------------------------------------------------*/
 #define APP_WATCH_GUI_TASK_STACK_SIZE (16 << 10)
@@ -75,6 +76,8 @@ void app_watch_entry(void *parameter)
         return;
     }
     lv_adv_screen_set_shape(LV_ADV_SCREEN_SHAPE_ROUND);
+
+    watchx_kvdb_init();
 
     if (watchx_init() != 0) {
         return;
