@@ -56,7 +56,7 @@ static void applist_add_item(lv_obj_t *parent, void *user_data)
     for (size_t i = 0; i < LV_ADV_ARRAY_SIZE(desktop_items); i++) {
         const radio_item_t *item = desktop_items + i;
         lv_obj_t *obj = lv_adv_item_create(parent, LV_ADV_ITEM_ICON_TEXT_SINGLE);
-        lv_obj_set_width(obj, lv_pct(90));
+        lv_obj_set_width(obj, lv_pct(100));
         lv_obj_set_height(obj, 112);
         lv_obj_set_style_radius(obj, LV_RADIUS_CIRCLE, 0);
         lv_obj_set_style_bg_opa(obj, LV_OPA_COVER, 0);
