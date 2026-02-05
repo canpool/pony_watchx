@@ -28,12 +28,14 @@ typedef struct {
 /* functions (prototype/declaration) -----------------------------------------*/
 /* variables (extern) --------------------------------------------------------*/
 
+WX_IMG_DECLARE(img_clock);
 WX_IMG_DECLARE(img_settings);
 WX_IMG_DECLARE(img_flashlight);
 
 /* variables (local) ---------------------------------------------------------*/
 static const menu_item_t menu_items[] = {
     // clang-format off
+    {"Clock", WX_IMG_GET(img_clock), LV_ADV_PAGE(home)},
     {"Settings", WX_IMG_GET(img_settings), LV_ADV_PAGE(setting)},
     {"Flashlight", WX_IMG_GET(img_flashlight), LV_ADV_PAGE(flashlight)},
     {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
@@ -58,7 +60,11 @@ void menu_item_event_handler(lv_event_t *e)
 
     if (code == LV_EVENT_SHORT_CLICKED) {
         const lv_adv_page_class_t *page = (const lv_adv_page_class_t *)lv_event_get_user_data(e);
-        lv_adv_page_push(page, LV_SCR_LOAD_ANIM_MOVE_LEFT, NULL);
+        if (page == LV_ADV_PAGE(home)) {
+            lv_adv_page_back(page, LV_SCR_LOAD_ANIM_OUT_RIGHT, NULL);
+        } else {
+            lv_adv_page_push(page, LV_SCR_LOAD_ANIM_MOVE_LEFT, NULL);
+        }
     }
 }
 
