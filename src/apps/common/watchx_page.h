@@ -41,6 +41,7 @@ LV_ADV_PAGE_DECLARE(setting);
 LV_ADV_PAGE_DECLARE(setting_desktop);
 
 LV_ADV_PAGE_DECLARE(flashlight);
+LV_ADV_PAGE_DECLARE(calendar);
 
 #ifdef __cplusplus
 }

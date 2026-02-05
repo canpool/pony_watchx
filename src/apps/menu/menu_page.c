@@ -31,6 +31,7 @@ typedef struct {
 WX_IMG_DECLARE(img_clock);
 WX_IMG_DECLARE(img_settings);
 WX_IMG_DECLARE(img_flashlight);
+WX_IMG_DECLARE(img_calendar);
 
 /* variables (local) ---------------------------------------------------------*/
 static const menu_item_t menu_items[] = {
@@ -38,6 +39,7 @@ static const menu_item_t menu_items[] = {
     {"Clock", WX_IMG_GET(img_clock), LV_ADV_PAGE(home)},
     {"Settings", WX_IMG_GET(img_settings), LV_ADV_PAGE(setting)},
     {"Flashlight", WX_IMG_GET(img_flashlight), LV_ADV_PAGE(flashlight)},
+    {"Calendar", WX_IMG_GET(img_calendar), LV_ADV_PAGE(calendar)},
     {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
     {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
     {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
