@@ -40,6 +40,8 @@ LV_ADV_PAGE_DECLARE(menu);
 LV_ADV_PAGE_DECLARE(setting);
 LV_ADV_PAGE_DECLARE(setting_desktop);
 
+LV_ADV_PAGE_DECLARE(flashlight);
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

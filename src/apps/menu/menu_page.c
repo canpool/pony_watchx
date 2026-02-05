@@ -29,11 +29,13 @@ typedef struct {
 /* variables (extern) --------------------------------------------------------*/
 
 WX_IMG_DECLARE(img_settings);
+WX_IMG_DECLARE(img_flashlight);
 
 /* variables (local) ---------------------------------------------------------*/
 static const menu_item_t menu_items[] = {
     // clang-format off
     {"Settings", WX_IMG_GET(img_settings), LV_ADV_PAGE(setting)},
+    {"Flashlight", WX_IMG_GET(img_flashlight), LV_ADV_PAGE(flashlight)},
     {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
     {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
     {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
