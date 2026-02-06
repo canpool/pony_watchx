@@ -15,7 +15,7 @@ DEFINES += WX_USE_FILE_RESOURCE \
     LV_ADV_IMG_RES_PATH=\\\"/res/images\\\"
 
 build_res.commands = python $$PWD/3rdparty/lv_advanced/scripts/build_res.py \
-    -i $$PWD/res -o $$DESTDIR/res --no-parents
+    -i $$PWD/res -o $$DESTDIR/res --no-parents --width $$DISPLAY_WIDTH --height $$DISPLAY_HEIGHT
 build_res.target = build_res
 QMAKE_EXTRA_TARGETS += build_res
 PRE_TARGETDEPS += build_res
