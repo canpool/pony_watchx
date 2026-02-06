@@ -11,6 +11,16 @@
 /* includes (project) --------------------------------------------------------*/
 
 /* defines -------------------------------------------------------------------*/
+
+#define CALENDAR_HEADER_H        70
+#define CALENDAR_HEDAER_PAD_TOP  15
+#define CALENDAR_HEDAER_PAD_LEFT 40
+#define CALENDAR_HEDAER_PAD_GAP  5
+#define CALENDAR_HEDAER_BUTTON_W 48
+#define CALENDAR_HEDAER_BUTTON_H 48
+#define CALENDAR_BODY_PAD_TOP    5
+#define CALENDAR_BODY_PAD_BOTTOM 40
+
 /* typedefs ------------------------------------------------------------------*/
 
 typedef struct {
@@ -51,12 +61,32 @@ static lv_obj_t *page_on_create(lv_adv_page_t *self)
     lv_obj_t *scr = lv_adv_create_screen();
 
     lv_obj_t *calendar = lv_calendar_create(scr);
-    lv_obj_set_size(calendar, lv_pct(90), lv_pct(90));
-    lv_obj_set_style_radius(calendar, 40, 0);
+    lv_obj_set_size(calendar, lv_pct(100), lv_pct(100));
     lv_obj_center(calendar);
 
+    lv_obj_t *body = lv_obj_get_child(calendar, 0);
+    if (body) {
+        lv_obj_set_style_pad_top(body, CALENDAR_BODY_PAD_TOP, LV_PART_MAIN);
+        lv_obj_set_style_pad_bottom(body, CALENDAR_BODY_PAD_BOTTOM, LV_PART_MAIN);
+        lv_obj_update_layout(body);
+    }
+
 #if LV_USE_CALENDAR_HEADER_ARROW
-    lv_calendar_header_arrow_create(calendar);
+    lv_obj_t *header = lv_calendar_header_arrow_create(calendar);
+
+    lv_obj_set_height(header, CALENDAR_HEADER_H);
+    lv_obj_set_style_pad_left(header, CALENDAR_HEDAER_PAD_LEFT, LV_PART_MAIN);
+    lv_obj_set_style_pad_top(header, CALENDAR_HEDAER_PAD_TOP, LV_PART_MAIN);
+    lv_obj_set_style_pad_right(header, CALENDAR_HEDAER_PAD_LEFT, LV_PART_MAIN);
+    lv_obj_set_style_pad_bottom(header, 0, LV_PART_MAIN);
+    lv_obj_set_style_pad_gap(header, CALENDAR_HEDAER_PAD_GAP, LV_PART_MAIN);
+
+    lv_obj_t *mo_prev = lv_obj_get_child(header, 0);   // month previous button
+    lv_obj_t *mo_next = lv_obj_get_child(header, 2);   // month next button
+    lv_obj_set_size(mo_prev, CALENDAR_HEDAER_BUTTON_W, CALENDAR_HEDAER_BUTTON_H);
+    lv_obj_set_size(mo_next, CALENDAR_HEDAER_BUTTON_W, CALENDAR_HEDAER_BUTTON_H);
+    lv_obj_set_style_radius(mo_prev, LV_RADIUS_CIRCLE, 0);
+    lv_obj_set_style_radius(mo_next, LV_RADIUS_CIRCLE, 0);
 #endif
 
     calendar_init_date(calendar);
