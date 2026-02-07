@@ -32,6 +32,9 @@ lv_adv_app_t *dial_create_app(lv_obj_t *parent, int32_t dial_id, void *user_data
 lv_adv_dial_t *dial_get_item(int32_t dial_id);
 const void *dial_get_power_grade_src(lv_adv_dial_power_grade_t grade);
 
+int dial_set_id(int32_t id);
+int dial_get_id(int32_t *id);
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

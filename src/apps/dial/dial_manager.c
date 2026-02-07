@@ -9,6 +9,7 @@
 /* includes (other library) --------------------------------------------------*/
 /* includes (project) --------------------------------------------------------*/
 #include "watchx_image.h"
+#include "watchx_settings.h"
 
 /* defines -------------------------------------------------------------------*/
 /* typedefs ------------------------------------------------------------------*/
@@ -55,6 +56,12 @@ static const void *const grade_srcs[] = {
 
 /* variables (global) --------------------------------------------------------*/
 /* functions (inline) --------------------------------------------------------*/
+
+static inline bool id_is_invalid(int32_t id)
+{
+    return (id < 0 || id >= DIAL_BUILTIN_NUM);
+}
+
 /* functions (implementation) ------------------------------------------------*/
 
 lv_adv_app_t *dial_create_app(lv_obj_t *parent, int32_t dial_id, void *user_data)
@@ -72,7 +79,7 @@ lv_adv_app_t *dial_create_app(lv_obj_t *parent, int32_t dial_id, void *user_data
 
 lv_adv_dial_t *dial_get_item(int32_t dial_id)
 {
-    if (dial_id < 0 || dial_id >= DIAL_TOTAL_NUM) {
+    if (id_is_invalid(dial_id)) {
         return NULL;
     }
     return &dial_items[dial_id];
@@ -81,4 +88,28 @@ lv_adv_dial_t *dial_get_item(int32_t dial_id)
 const void *dial_get_power_grade_src(lv_adv_dial_power_grade_t grade)
 {
     return grade_srcs[grade];
+}
+
+int dial_set_id(int32_t id)
+{
+    if (id_is_invalid(id)) {
+        return -1;
+    }
+    if (lv_adv_kv_set_int(WX_KEY_DIAL, id) != LV_ADV_KV_RES_OK) {
+        return -1;
+    }
+    return 0;
+}
+
+int dial_get_id(int32_t *id)
+{
+    int32_t dial_id = 0;
+    if (lv_adv_kv_get_int(WX_KEY_DIAL, &dial_id) != LV_ADV_KV_RES_OK) {
+        return -1;
+    }
+    if (id_is_invalid(dial_id)) {
+        return -1;
+    }
+    *id = dial_id;
+    return 0;
 }

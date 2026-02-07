@@ -65,7 +65,7 @@ static void preview_event_handler(lv_event_t *e)
 {
     lv_obj_t *obj = lv_event_get_current_target(e);
     int32_t index = lv_obj_get_index(obj);
-    lv_adv_kv_set_int(WX_KEY_DIAL, index);
+    dial_set_id(index);
     LV_ADV_PAGE_BACK_ANIM(LV_SCR_LOAD_ANIM_FADE_OUT);
 }
 
@@ -144,7 +144,7 @@ static void page_on_show(lv_adv_page_t *self)
     page_ctx_t *ctx = (page_ctx_t *)self;
 
     int32_t dial_id = 0;
-    lv_adv_kv_get_int(WX_KEY_DIAL, &dial_id);
+    dial_get_id(&dial_id);
     lv_adv_linear_layout_select(ctx->layout, dial_id);
 }
 
