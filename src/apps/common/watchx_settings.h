@@ -18,13 +18,17 @@ extern "C" {
 
 /* defines -------------------------------------------------------------------*/
 
-#define WX_KEY_DIAL    "ui.dial"
-#define WX_KEY_DESKTOP "ui.desktop"
+#define WX_KEY_DIAL                                  "ui.dial"
+#define WX_KEY_DESKTOP                               "ui.desktop"
+#define WX_KEY_LANGUAGE                              "ui.lang"
+#define WX_KEY_ABCDEFGHIJKLMNOPQRSTUVWXYZ_1234567890 "format"
 
 /* typedefs ------------------------------------------------------------------*/
 /* macro ---------------------------------------------------------------------*/
 /* inlines -------------------------------------------------------------------*/
 /* externs -------------------------------------------------------------------*/
+
+void watchx_setting_language(void);
 
 #ifdef __cplusplus
 }

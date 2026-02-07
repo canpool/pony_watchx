@@ -7,6 +7,7 @@ SOURCES += \
 
 INCLUDEPATH += \
     $$PWD/include \
+    $$PWD/src \
     $$PWD/src/apps/common \
     $$PWD/src/misc \
     $$PWD/platform/common

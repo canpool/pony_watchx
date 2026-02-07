@@ -40,7 +40,7 @@ static void event_handler(lv_event_t *e)
         if (item == NULL) {
             break;
         }
-        lv_label_set_text(ctx->title, item->name);
+        watchx_text_update(ctx->title, item->name);
         lv_adv_image_set_src(ctx->power_img, dial_get_power_grade_src(item->power_grade));
         if (item->editable) {
             lv_obj_remove_flag(ctx->custom_btn, LV_OBJ_FLAG_HIDDEN);
@@ -106,7 +106,7 @@ static lv_obj_t *page_on_create(lv_adv_page_t *self)
     lv_obj_remove_flag(title_cont, LV_OBJ_FLAG_SCROLLABLE);
 
     lv_obj_t *title_label = lv_label_create(title_cont);
-    lv_obj_set_style_text_font(title_label, WX_FONT(32), 0);
+    watchx_text_set(title_label, "", 32);
     lv_obj_set_width(title_label, lv_pct(100));
     lv_obj_set_style_text_align(title_label, LV_TEXT_ALIGN_CENTER, 0);
     ctx->title = title_label;
@@ -118,7 +118,7 @@ static lv_obj_t *page_on_create(lv_adv_page_t *self)
     lv_adv_layout_set_align(power_cont, LV_ALIGN_CENTER);
     lv_obj_set_size(power_cont, lv_pct(100), LV_SIZE_CONTENT);
     lv_obj_t *power_label = lv_label_create(power_cont);
-    lv_label_set_text(power_label, "power grade");
+    watchx_text_set(power_label, TR_POWER_GRADE, 24);
     lv_obj_set_style_text_opa(power_label, LV_OPA_70, 0);
     lv_obj_t *power_img = lv_image_create(power_cont);
     lv_adv_image_set_src(power_img, dial_get_power_grade_src(LV_ADV_DIAL_POWER_GRADE_1));
@@ -129,7 +129,7 @@ static lv_obj_t *page_on_create(lv_adv_page_t *self)
 
     lv_obj_t *btn = lv_button_create(scr);
     lv_obj_t *btn_label = lv_label_create(btn);
-    lv_label_set_text(btn_label, "Custom");
+    watchx_text_set(btn_label, TR_CUSTOM, 24);
     lv_obj_center(btn_label);
     lv_obj_set_width(btn, lv_pct(30));
     lv_obj_set_style_radius(btn, LV_RADIUS_CIRCLE, 0);

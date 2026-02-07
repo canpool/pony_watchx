@@ -24,6 +24,7 @@ extern "C" {
 /* externs -------------------------------------------------------------------*/
 
 void watchx_text_set(lv_obj_t *obj, const char *txt, uint16_t font_size);
+void watchx_text_update(lv_obj_t *obj, const char *txt);
 
 #ifdef __cplusplus
 }

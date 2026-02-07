@@ -18,6 +18,9 @@ extern "C" {
 #endif /* __cplusplus */
 
 /* defines -------------------------------------------------------------------*/
+
+#define WX_FONT_NAME_DEFAULT "default"
+
 /* typedefs ------------------------------------------------------------------*/
 /* macro ---------------------------------------------------------------------*/
 
@@ -28,6 +31,8 @@ extern "C" {
 
 void watchx_font_init(void);
 void watchx_font_deinit(void);
+
+void watchx_font_set(const char *font_name);
 
 lv_font_t *watchx_font_create(uint16_t font_size);
 void watchx_font_delete(lv_font_t *font);

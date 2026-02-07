@@ -19,13 +19,17 @@ typedef struct {
 /* macro ---------------------------------------------------------------------*/
 /* functions (prototype/declaration) -----------------------------------------*/
 /* variables (extern) --------------------------------------------------------*/
+
+WX_IMG_DECLARE(img_setting_desktop);
+WX_IMG_DECLARE(img_setting_language);
+
 /* variables (local) ---------------------------------------------------------*/
 
 static const setting_item_t setting_items[] = {
-    {"desktop", WX_IMG_GET(img_setting_desktop), LV_ADV_PAGE(menu_setting)},
-    {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
-    {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
-    {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
+    {TR_SETTING_DESKTOP, WX_IMG_GET(img_setting_desktop), LV_ADV_PAGE(menu_setting)},
+    {TR_SETTING_LANGUAGE, WX_IMG_GET(img_setting_language), LV_ADV_PAGE(setting_language)},
+    {TR_DUMMY, WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
+    {TR_DUMMY, WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
 };
 
 /* variables (global) --------------------------------------------------------*/
@@ -75,7 +79,7 @@ static lv_obj_t *page_on_create(lv_adv_page_t *self)
     lv_adv_layout_set_align(menu, LV_ALIGN_TOP_MID);
 
     lv_obj_t *title = lv_adv_applist_add_title(lst, "");
-    watchx_text_set(title, "Settings", 32);
+    watchx_text_set(title, TR_SETTINGS, 32);
     lv_adv_applist_add_item(lst, applist_add_item, NULL);
 
     return scr;

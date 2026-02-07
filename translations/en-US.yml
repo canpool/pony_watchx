@@ -1,0 +1,19 @@
+en-US:
+  menu_calendar: Calendar
+  menu_flashlight: Flashlight
+  menu_setting: Setting
+  menu_clock: Clock
+  dial_1: Digital Normal
+  dial_2: Analog Normal
+  desktop: Desktop
+  desktop_list: List
+  desktop_cellular: Cellular
+  language: Language
+  en-US: English (United States)
+  zh-CN: Chinese (Simplified)
+  settings: Settings
+  setting_desktop: Desktop
+  setting_language: Language
+  power_grade: Power Grade
+  custom: Custom
+  dummy: Dummy

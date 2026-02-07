@@ -10,6 +10,7 @@
 /* includes (project) --------------------------------------------------------*/
 #include "watchx_image.h"
 #include "watchx_settings.h"
+#include "watchx_tr.h"
 
 /* defines -------------------------------------------------------------------*/
 /* typedefs ------------------------------------------------------------------*/
@@ -31,7 +32,7 @@ WX_IMG_DECLARE(img_power_grade_3);
 
 static lv_adv_dial_t dial_items[DIAL_TOTAL_NUM] = {
     {
-        "Digital Normal",
+        TR_DIAL_1,
         LV_ADV_APP(dial_1),
         WX_IMG_GET(img_dial1_pre),
         LV_ADV_DIAL_RESOURCE_BUILTIN,
@@ -39,7 +40,7 @@ static lv_adv_dial_t dial_items[DIAL_TOTAL_NUM] = {
         false,
     },
     {
-        "Analog Normal",
+        TR_DIAL_2,
         LV_ADV_APP(dial_2),
         WX_IMG_GET(img_dial2_pre),
         LV_ADV_DIAL_RESOURCE_BUILTIN,

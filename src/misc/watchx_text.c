@@ -22,6 +22,10 @@
 
 void watchx_text_set(lv_obj_t *obj, const char *txt, uint16_t font_size)
 {
-    lv_label_set_text(obj, txt);
-    lv_obj_set_style_text_font(obj, WX_FONT(font_size), 0);
+    lv_adv_i18n_text_set(obj, txt, font_size);
+}
+
+void watchx_text_update(lv_obj_t *obj, const char *txt)
+{
+    lv_adv_i18n_text_update_tr_id(obj, txt);
 }

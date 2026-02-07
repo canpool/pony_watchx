@@ -16,6 +16,12 @@
 #define WX_FONT_CACHE_NUM (((WX_FONT_MAX_SIZE - WX_FONT_MIN_SIZE) / 2) + 1)
 
 /* typedefs ------------------------------------------------------------------*/
+
+typedef struct {
+    lv_font_t *font;
+    int32_t refs;
+} watchx_font_t;
+
 /* macro ---------------------------------------------------------------------*/
 /* functions (prototype/declaration) -----------------------------------------*/
 /* variables (extern) --------------------------------------------------------*/
@@ -29,7 +35,7 @@ extern const int DroidSansFallback_size;
 
 /* variables (local) ---------------------------------------------------------*/
 
-static lv_font_t *font_cache[WX_FONT_CACHE_NUM];
+static watchx_font_t font_cache[WX_FONT_CACHE_NUM];
 
 /* variables (global) --------------------------------------------------------*/
 /* functions (inline) --------------------------------------------------------*/
@@ -45,25 +51,46 @@ lv_font_t *watchx_font_create(uint16_t font_size)
         font_size = WX_FONT_MAX_SIZE;
     }
     uint16_t idx = (font_size - WX_FONT_MIN_SIZE) >> 1;
-    if (font_cache[idx] == NULL) {
+    if (font_cache[idx].font == NULL) {
 #ifdef WX_USE_FILE_RESOURCE
-        font_cache[idx] = lv_freetype_font_create(TTF_PATH, LV_FREETYPE_FONT_RENDER_MODE_BITMAP,
-                                                  font_size, LV_FREETYPE_FONT_STYLE_NORMAL);
+        font_cache[idx].font =
+            lv_freetype_font_create(TTF_PATH, LV_FREETYPE_FONT_RENDER_MODE_BITMAP, font_size,
+                                    LV_FREETYPE_FONT_STYLE_NORMAL);
 #else
-        font_cache[idx] =
+        font_cache[idx].font =
             lv_tiny_ttf_create_data(DroidSansFallback, DroidSansFallback_size, font_size);
 #endif
     }
-    return font_cache[idx];
+    ++font_cache[idx].refs;
+    return font_cache[idx].font;
 }
 
 void watchx_font_delete(lv_font_t *font)
 {
+    if (font == NULL) {
+        return;
+    }
+    int i;
+    for (i = 0; i < WX_FONT_CACHE_NUM; ++i) {
+        if (font_cache[i].font == font) {
+            break;
+        }
+    }
+    if (i == WX_FONT_CACHE_NUM) {
+        return;
+    }
+    if (font_cache[i].refs <= 0) {
+        return;
+    }
+    if (--font_cache[i].refs != 0) {
+        return;
+    }
 #ifdef WX_USE_FILE_RESOURCE
     lv_freetype_font_delete(font);
 #else
     lv_tiny_ttf_destroy(font);
 #endif
+    font_cache[i].font = NULL;
 }
 
 #if LV_ADV_FONT_CUSTOM
@@ -81,4 +108,9 @@ void watchx_font_init(void)
 
 void watchx_font_deinit(void)
 {
+}
+
+void watchx_font_set(const char *font_name)
+{
+
 }

@@ -35,8 +35,7 @@ lv_obj_t *menu_list_create(lv_obj_t *parent, const menu_item_t *items, uint16_t 
         lv_obj_set_style_radius(btn, LV_RADIUS_CIRCLE, 0);
         lv_obj_set_style_bg_color(btn, lv_color_hex(0x272727), 0);
         lv_obj_t *title = lv_adv_button_get_label(btn);
-        lv_label_set_text(title, item->title);
-        lv_obj_set_style_text_font(title, WX_FONT(32), 0);
+        watchx_text_set(title, item->title, 32);
         lv_obj_t *icon = lv_adv_button_get_icon(btn);
         lv_adv_image_set_size(icon, 96, 96);
         if (item->page != NULL) {
