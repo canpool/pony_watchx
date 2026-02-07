@@ -4,19 +4,13 @@
  */
 
 /* define to prevent recursive inclusion -------------------------------------*/
-#ifndef __WATCHX_PAGE_H__
-#define __WATCHX_PAGE_H__
+#ifndef __MENU_MANAGER_H__
+#define __MENU_MANAGER_H__
 
 /* includes (standard library, system) ---------------------------------------*/
 /* includes (other library) --------------------------------------------------*/
 /* includes (project) --------------------------------------------------------*/
 #include <watchx.h>
-#include <watchx_font.h>
-#include <watchx_image.h>
-#include <watchx_icon.h>
-#include <watchx_text.h>
-#include <watchx_settings.h>
-#include <watchx_types.h>
 /* includes (local) ----------------------------------------------------------*/
 
 #ifdef __cplusplus
@@ -25,27 +19,22 @@ extern "C" {
 
 /* defines -------------------------------------------------------------------*/
 /* typedefs ------------------------------------------------------------------*/
+
+enum {
+    MENU_ID_LIST,
+    MENU_ID_CELLULAR,
+    MENU_ID_NUM,
+};
+
 /* macro ---------------------------------------------------------------------*/
 /* inlines -------------------------------------------------------------------*/
 /* externs -------------------------------------------------------------------*/
 
-LV_ADV_PAGE_DECLARE(dummy);
-
-LV_ADV_PAGE_DECLARE(home);
-LV_ADV_SUBPAGE_DECLARE(dial);
-
-LV_ADV_PAGE_DECLARE(dial_gallery);
-
-LV_ADV_PAGE_DECLARE(menu);
-LV_ADV_PAGE_DECLARE(menu_setting);
-
-LV_ADV_PAGE_DECLARE(setting);
-
-LV_ADV_PAGE_DECLARE(flashlight);
-LV_ADV_PAGE_DECLARE(calendar);
+int menu_set_id(int32_t id);
+int menu_get_id(int32_t *id);
 
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
 
-#endif /* __WATCHX_PAGE_H__ */
+#endif /* __MENU_MANAGER_H__ */

@@ -12,16 +12,10 @@
 /* defines -------------------------------------------------------------------*/
 /* typedefs ------------------------------------------------------------------*/
 
-enum {
-    MENU_INDEX_LIST = 0,
-    MENU_INDEX_CELLULAR,
-    MENU_INDEX_NUM,
-};
-
 typedef struct {
     lv_adv_page_t base;
     lv_obj_t *sv;   // stacked view
-    int32_t menu_idx;
+    int32_t menu_id;
 } page_ctx_t;
 
 /* macro ---------------------------------------------------------------------*/
@@ -76,7 +70,7 @@ static lv_obj_t *page_on_create(lv_adv_page_t *self)
     lv_obj_t *scr = lv_adv_create_screen();
 
     ctx->sv = lv_adv_stackedview_create(scr);
-    ctx->menu_idx = MENU_INDEX_LIST;
+    ctx->menu_id = MENU_ID_LIST;
 
     menu_create_f creators[] = {
         menu_list_create,
@@ -94,8 +88,8 @@ static lv_obj_t *page_on_create(lv_adv_page_t *self)
 static void page_on_show(lv_adv_page_t *self)
 {
     page_ctx_t *ctx = (page_ctx_t *)self;
-    lv_adv_kv_get_int(WX_KEY_DESKTOP, &ctx->menu_idx);
-    lv_adv_stackedview_set_current(ctx->sv, ctx->menu_idx);
+    menu_get_id(&ctx->menu_id);
+    lv_adv_stackedview_set_current(ctx->sv, ctx->menu_id);
 }
 
 static void page_on_hide(lv_adv_page_t *self)
@@ -111,7 +105,7 @@ static void page_on_destroy(lv_adv_page_t *self)
 static void page_on_back(lv_adv_page_t *self)
 {
     page_ctx_t *ctx = (page_ctx_t *)self;
-    if (ctx->menu_idx == MENU_INDEX_LIST) {
+    if (ctx->menu_id == MENU_ID_LIST) {
         lv_adv_page_back(NULL, LV_SCR_LOAD_ANIM_OUT_RIGHT, NULL);
     }
 }

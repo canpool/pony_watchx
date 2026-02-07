@@ -4,7 +4,7 @@
  */
 
 /* includes (local) ----------------------------------------------------------*/
-#include "setting_page.h"
+#include "menu_page.h"
 /* includes (standard library, system) ---------------------------------------*/
 /* includes (other library) --------------------------------------------------*/
 /* includes (project) --------------------------------------------------------*/
@@ -20,6 +20,9 @@ typedef struct {
 /* macro ---------------------------------------------------------------------*/
 /* functions (prototype/declaration) -----------------------------------------*/
 /* variables (extern) --------------------------------------------------------*/
+
+WX_IMG_DECLARE(img_setting_desktop);
+
 /* variables (local) ---------------------------------------------------------*/
 
 static const radio_item_t desktop_items[] = {
@@ -47,7 +50,7 @@ static void value_changed_event_handler(lv_event_t *e)
         lv_img_set_src(img, ICON_RADIO_CHECKED);
 
         int32_t idx = lv_obj_get_index(cur_child);
-        lv_adv_kv_set_int(WX_KEY_DESKTOP, idx);
+        menu_set_id(idx);
     }
 }
 
@@ -92,9 +95,9 @@ static void page_on_show(lv_adv_page_t *self)
 {
     page_ctx_t *ctx = (page_ctx_t *)self;
 
-    int32_t desktop_type = 0;
-    lv_adv_kv_get_int(WX_KEY_DESKTOP, &desktop_type);
-    lv_adv_radio_applist_set_current_index(ctx->lst, desktop_type);
+    int32_t id = 0;
+    menu_get_id(&id);
+    lv_adv_radio_applist_set_current_index(ctx->lst, id);
 }
 
 static void page_on_hide(lv_adv_page_t *self)
@@ -112,4 +115,4 @@ static void page_on_back(lv_adv_page_t *self)
     lv_adv_page_back(NULL, LV_SCR_LOAD_ANIM_OUT_RIGHT, NULL);
 }
 
-LV_ADV_PAGE_DEF(setting_desktop);
+LV_ADV_PAGE_DEF(menu_setting);

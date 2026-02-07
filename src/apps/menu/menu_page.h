@@ -12,6 +12,7 @@
 /* includes (project) --------------------------------------------------------*/
 #include "watchx_page.h"
 /* includes (local) ----------------------------------------------------------*/
+#include "menu_manager.h"
 
 #ifdef __cplusplus
 extern "C" {

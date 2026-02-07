@@ -26,16 +26,9 @@ typedef struct {
     const lv_adv_page_class_t *page;
 } setting_item_t;
 
-typedef struct {
-    const char *title;
-    const void *icon;
-} radio_item_t;
-
 /* macro ---------------------------------------------------------------------*/
 /* inlines -------------------------------------------------------------------*/
 /* externs -------------------------------------------------------------------*/
-
-WX_IMG_DECLARE(img_setting_desktop);
 
 #ifdef __cplusplus
 }

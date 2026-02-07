@@ -22,7 +22,7 @@ typedef struct {
 /* variables (local) ---------------------------------------------------------*/
 
 static const setting_item_t setting_items[] = {
-    {"desktop", WX_IMG_GET(img_setting_desktop), LV_ADV_PAGE(setting_desktop)},
+    {"desktop", WX_IMG_GET(img_setting_desktop), LV_ADV_PAGE(menu_setting)},
     {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
     {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
     {"dummy", WX_IMG_GET(img_logo), LV_ADV_PAGE(dummy)},
