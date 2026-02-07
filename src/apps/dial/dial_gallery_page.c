@@ -91,6 +91,7 @@ static lv_obj_t *page_on_create(lv_adv_page_t *self)
         lv_obj_add_flag(img, LV_OBJ_FLAG_CLICKABLE);
         lv_obj_remove_flag(img, LV_OBJ_FLAG_SCROLLABLE);
         lv_obj_add_flag(img, LV_OBJ_FLAG_SCROLL_ON_FOCUS);
+        lv_obj_remove_flag(img, LV_OBJ_FLAG_CLICK_FOCUSABLE);
         lv_group_add_obj(lv_group_get_default(), img);
         lv_adv_effect_set_glow(img, 10, lv_palette_main(LV_PALETTE_BLUE));
         lv_adv_effect_set_glow_opa(img, LV_OPA_20);
