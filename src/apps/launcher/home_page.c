@@ -39,7 +39,8 @@ static lv_obj_t *page_on_create(lv_adv_page_t *self)
 
     lv_obj_t *ta = lv_adv_tileview_area(tv, LV_ADV_TV_TOP_AREA);
     lv_obj_set_style_bg_opa(ta, LV_OPA_COVER, 0);
-    lv_obj_set_style_bg_color(ta, lv_color_hex(0xff0000), 0);
+    lv_obj_set_style_bg_color(ta, lv_color_black(), 0);
+    lv_adv_subpage_manager_add(&ctx->spm, LV_ADV_SUBPAGE(drop_down), ta);
 
     lv_obj_t *ba = lv_adv_tileview_area(tv, LV_ADV_TV_BOTTOM_AREA);
     lv_obj_set_style_bg_opa(ba, LV_OPA_COVER, 0);
